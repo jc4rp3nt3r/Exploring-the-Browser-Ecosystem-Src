@@ -1,0 +1,178 @@
+@@include('./includes/header.html')
+@@include('./includes/navigation.html')
+
+
+<section class="container-fluid py-4 bg-primary text-light">
+    <div class="row">
+        <div class="col-12">
+            <div class="display-4 text-center">Making Assertions</div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <code>    assert(true, 'This is a true assertion');</code>
+            <code>    assert(false, 'This is a false assertion')</code>
+            <code>    var s = 'some string';
+    assert(s != undefined, 'The variable s is defined');</code>
+
+            <h2 class="text-center">Falsey Values</h2>
+            <code>    assert(null, 'Null is Falsey');</code>
+            <code>    assert(undefined, 'undefined is Falsey');</code>
+            <code>    assert(NaN, 'NaN is Falsey');</code>
+            <code>    assert(0, '0 is Falsey');</code>
+            <code>    assert("", 'The Empty String is Falsey');</code>
+            <code>    assert(false, 'false is (of course) Falsey');</code>
+
+
+            <h2 class="text-center">Truthy Values</h2>
+            <code>    assert(true, 'true is (of course) Truthy');</code>
+            <code>    assert('String', 'Strings are Truthy');</code>
+            <code>    assert(1, 'All non-zero numbers are Truthy')</code>
+            <code>    assert({}, 'Objects are Truthy')</code>
+            <code>    assert([], 'Arrays are Truthy')</code>
+            <code>    assert('up, up, down, down, left, right, left, right, B, A', 'EVERYTHING not Falsey is Truthy')</code>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid py-4 bg-primary text-light">
+    <div class="row">
+        <div class="col-12">
+            <div class="display-4 text-center">iFrames</div>
+        </div>
+    </div>
+</section>
+
+
+<section class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center">Local Frame - We have access to this</h2>
+            <iframe id="fLocal" src="./local.html" style="height:350px;"></iframe>
+
+            <code>assert( $('#fLocal'), 'We can see the iFrame Element in JavaScript');</code>
+            <code>assert( $('#fLocal').attr('src'), 'Has a src of ' + $('#fLocal').attr('src'));</code>
+            <code>assert( $('#fLocal')[0].contentWindow, "We can see the iFrame's Window");</code>
+            <code>var wLocal = $('#fLocal')[0].contentWindow;
+assert( 
+    wLocal.$('h1').text(), 
+    'We can pull info from the iFrame. H1: ' + wLocal.$('h1').text() + ''
+);</code>
+
+        </div>
+    </div>
+</section>
+
+<section class="container py-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Remote Frame - W3 Disables Embedding</h2>
+            <iframe src="https://www.w3schools.com"></iframe>
+        </div>
+    </div>
+</section>
+
+<section class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center">Remote Frame - Embedding Enabled, but NO Access</h2>
+            <iframe id="fYoutube" src="https://www.youtube.com/embed/HmZKgaHa3Fg" height="630" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            <code>assert( $('#fYoutube'), 'We can see the iFrame Element in JavaScript');</code>
+            <code>assert( $('#fYoutube').attr('src'), 'Has a src of ' + $('#fYoutube').attr('src'));</code>
+            <code>assert( $('#fYoutube')[0].contentWindow, "We can see the iFrame's Window");</code>
+            <code>var wYoutube = $('#fYoutube')[0].contentWindow;
+try {
+    assert(
+        wYoutube.$('h1').text(),
+        'We can pull info from the iFrame. H1: ' + wYoutube.$('h1').text() + ''
+    );
+}
+catch(e) {
+    assert(false, 'CATCH: ' + e.message);
+}
+            </code>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="container-fluid py-4 bg-primary text-light">
+    <div class="row">
+        <div class="col-12">
+            <div class="display-4 text-center">JavaScript - Advanced Concepts</div>
+        </div>
+    </div>
+</section>
+
+
+<section class="container py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center">Function Closures</h2>
+
+            <code>(function() {
+    var myVar = "Some String";
+
+    assert(typeof(myVar) == 'string', 'myVar is a string');
+})();
+            </code>
+
+            <code>(function() {
+    if (true) {
+        var myVar = "Some String";
+    }
+
+    assert(typeof(myVar) == 'string', 'myVar is a string');
+})();
+            </code>
+
+            <code>(function() {
+    if (true) {
+        var myVar = "Some String";
+    }
+})();
+assert(typeof(myVar) == 'string', 'myVar is a string');
+            </code>
+
+  
+            
+
+<h2 class="text-center">"use strict"; <small><a href="https://www.w3schools.com/js/js_strict.asp" target="_blank">(read more)</a></small></h2>
+             <code>assert(window.myVar, 'The value of window.myVar is: ' + window.myVar);</code>
+            <code>try{
+    (function() {
+        if (true) {
+            myVar = "Some String";
+        }
+
+        assert(myVar, 'The value of myVar is: ' + myVar);
+    })();
+}
+catch(e) {
+    assert(false, 'CATCH: ' + e.message);
+}
+            </code>
+
+            <div class="bg-warning text-center m-3"><b>Try This:</b> Remove the "use strict"; line from /dist/js/main.js</div>
+            <hr />
+
+
+
+
+            <h2 class="text-center">Other Topics</h2>
+            
+
+
+
+
+        </div>
+    </div>
+</section>
+
+
+@@include('./includes/footer.html')
